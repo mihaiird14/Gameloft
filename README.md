@@ -66,20 +66,52 @@ Add these to your `pom.xml`:
 </dependencies>
 ```
 
-### Run all tests
-Right-click the `java` folder under `src/test/` in IntelliJ → **Run 'All Tests'**
+### Option 1 — Run from IntelliJ
 
-### Run only UI tests
+**All tests:**
+Right-click the `java` folder under `src/test/` → **Run 'All Tests'**
+
+**Only UI tests:**
 Right-click the `ui` package → **Run 'Tests in ui'**
 
-### Run only API tests
+**Only API tests:**
 Right-click the `api` package → **Run 'Tests in api'**
 
-### Run a single test class
+**Single test class:**
 Right-click any test file (e.g. `CategoryLoadingTest.java`) → **Run 'CategoryLoadingTest'**
 
-### Run a single test method
+**Single test method:**
 Open the test file → click the green arrow next to the method name → **Run**
+
+---
+
+### Option 2 — Run from terminal (requires Maven installed)
+
+**Install Maven:**
+1. Download from https://maven.apache.org/download.cgi → **apache-maven-3.9.x-bin.zip**
+2. Extract to `C:\Maven`
+3. Open PowerShell as Administrator and run (replace the path with the actual location where you extracted Maven and the correct version):
+```bash
+[System.Environment]::SetEnvironmentVariable("Path", [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\Maven\apache-maven-3.9.x\bin", "Machine")
+```
+4. Close PowerShell, open a new one and verify:
+```bash
+mvn -version
+```
+
+**Run tests:**
+```bash
+cd "path\to\gameloft"
+
+# All tests
+mvn test
+
+# Only UI tests
+mvn test -Dtest="CategoryLoadingTest,GamePageTest,NewsDetailTest,SearchTest"
+
+# Only API tests
+mvn test -Dtest="SearchSpecialCharsTest,SearchLongStringTest,CategoryEdgeCasesTest,MissingParamsTest"
+```
 ---
 
 ##  Bug Found — Infinite Loading Spinner
@@ -165,6 +197,7 @@ src/test/java/
 
 ## Test Results
 
+<img width="1176" height="198" alt="image" src="https://github.com/user-attachments/assets/52a5a064-6e71-429e-b6e4-618e35ff9c61" />
 <img width="715" height="613" alt="image" src="https://github.com/user-attachments/assets/0130f8cf-e51d-4abd-a5de-5ec28c49e049" />
 <img width="684" height="375" alt="image" src="https://github.com/user-attachments/assets/773bdf03-a824-436a-8a33-aae43525d802" />
 
